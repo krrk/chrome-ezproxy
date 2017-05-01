@@ -5,6 +5,8 @@ By: Tom Wambold <tom5760@gmail.com>
 
 Updates By: Rohit Agrawal <https://github.com/rohitagr>
 
+Firefox Adaptation By: Kieran Ramos <https://github.com/krrk>
+
 Code: https://github.com/tom5760/chrome-ezproxy
 
 Extension: https://chrome.google.com/extensions/detail/gfhnhcbpnnnlefhobdnmhenofhfnnfhi

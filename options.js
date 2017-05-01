@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function save_options() {
-        chrome.storage.sync.set({"base_url": url_box.value}, function() {
+        browser.storage.sync.set({"base_url": url_box.value}, function() {
             // Update status to let user know options were saved.
             status_field.innerHTML = "Options Saved.";
             setTimeout(function() {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function restore_options() {
-        chrome.storage.sync.get({"base_url": null}, function(items) {
+        browser.storage.sync.get({"base_url": null}, function(items) {
             var base_url = items["base_url"];
 
             if (base_url) {

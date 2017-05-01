@@ -1,7 +1,7 @@
 const DEFAULT_BASE_URL = "http://www.library.drexel.edu/cgi-bin/r.cgi?url=$@";
 
 function transformUrl(url, callback) {
-    chrome.storage.sync.get({"base_url": DEFAULT_BASE_URL}, function(items) {
+    browser.storage.sync.get({"base_url": DEFAULT_BASE_URL}, function(items) {
         var base = items["base_url"];
         if (base.indexOf("$@") >= 0) {
             base = base.replace("$@", url);
@@ -10,28 +10,28 @@ function transformUrl(url, callback) {
     });
 }
 
-chrome.browserAction.onClicked.addListener(function(tab) {
+browser.browserAction.onClicked.addListener(function(tab) {
     transformUrl(tab.url, function(newUrl) {
-        chrome.tabs.update(tab.id, {"url": newUrl});
+        browser.tabs.update(tab.id, {"url": newUrl});
     });
 });
 
-chrome.contextMenus.onClicked.addListener(function(info, tab) {
+browser.contextMenus.onClicked.addListener(function(info, tab) {
     transformUrl(info.linkUrl, function(newUrl) {
-        chrome.tabs.create({"url": newUrl});
+        browser.tabs.create({"url": newUrl});
     });
 });
 
 function initialize() {
-    chrome.contextMenus.create({
-        "title": "Open Link with EZProxy",
-        "contexts": ["link"],
-        "id": "redirect"
+    browser.contextMenus.create({
+        title: "Open Link with EZProxy",
+        contexts: ["link"],
+        id: "redirect"
     });
 }
 
-chrome.runtime.onInstalled.addListener(function(details) {
-    chrome.storage.sync.get({"base_url": null}, function(items) {
+browser.runtime.onInstalled.addListener(function(details) {
+    browser.storage.sync.get({"base_url": null}, function(items) {
         if (!items["base_url"]) {
             // migrate old format
             var legacyBase = localStorage["base_url"];
@@ -40,7 +40,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
             } else {
                 legacyBase = DEFAULT_BASE_URL;
             }
-            chrome.storage.sync.set({"base_url": legacyBase}, function() {
+            browser.storage.sync.set({"base_url": legacyBase}, function() {
                 initialize();
             });
         } else {
