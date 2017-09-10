@@ -1,4 +1,4 @@
-Chrome EZProxy Redirect
+Chrome/Firefox EZProxy Redirect
 =======================
 
 By: Tom Wambold <tom5760@gmail.com>
@@ -8,6 +8,7 @@ Updates By: Rohit Agrawal <https://github.com/rohitagr>
 Firefox Adaptation By: Kieran Ramos <https://github.com/krrk>
 
 Code: https://github.com/tom5760/chrome-ezproxy
+Firefox Code: https://github.com/krrk/chrome-ezproxy
 
 Extension: https://chrome.google.com/extensions/detail/gfhnhcbpnnnlefhobdnmhenofhfnnfhi
 
@@ -28,6 +29,9 @@ would change to:
 
 Change Log
 ----------
+
+Version 15 - April 30, 2017:
+* Adapt plugin to work with Firefox Webextensions
 
 Version 14 - December 12, 2014:
 * Use chrome's synced storage to save the redirect url
